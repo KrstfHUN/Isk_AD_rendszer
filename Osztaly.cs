@@ -9,7 +9,6 @@ namespace Iskola
         public List<Diak> Diakok { get; set; }
         public Tanar Osztalyfonok { get; set; }
 
-        // Constructor
         public Osztaly(string nev, Tanar osztalyfonok)
         {
             this.Nev = nev;
