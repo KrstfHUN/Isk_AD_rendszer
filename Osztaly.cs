@@ -1,46 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Iskola;
 
-namespace Iskola
+public class Osztaly
 {
-    public class Osztaly
+    public string Nev { get; set; }
+    public List<Diak> Diakok { get; set; }
+    public Tanar Osztalyfonok { get; set; }
+    public List<Ertekeles> Ertekelesek { get; set; }
+
+    public Osztaly(string nev, Tanar osztalyfonok)
     {
-        public string Nev { get; set; }
-        public List<Diak> Diakok { get; set; }
-        public Tanar Osztalyfonok { get; set; }
+        this.Nev = nev;
+        this.Diakok = new List<Diak>();
+        this.Osztalyfonok = osztalyfonok;
+        this.Ertekelesek = new List<Ertekeles>();
+    }
 
-        public Osztaly(string nev, Tanar osztalyfonok)
+    public void HozzaadDiak(Diak diak)
+    {
+        if (Diakok.Count < 25)
         {
-            this.Nev = nev;
-            this.Diakok = new List<Diak>();
-            this.Osztalyfonok = osztalyfonok;
+            Diakok.Add(diak);
         }
-
-        public void HozzaadDiak(Diak diak)
+        else
         {
-            if (Diakok.Count < 25)
-            {
-                Diakok.Add(diak);
-            }
-            else
-            {
-                Console.WriteLine("Az osztály tele van, nem lehet új diákot felvenni.");
-            }
-        }
-
-        public void OsszesDiakListazasa()
-        {
-            Console.WriteLine($"A(z) {Nev} osztály diákjai:");
-            foreach (var diak in Diakok)
-            {
-                diak.TeljesNevKiirasa();
-            }
-        }
-
-        public void OsztalyfonokKiirasa()
-        {
-            Console.WriteLine($"Osztályfőnök: {Osztalyfonok.Nev}");
-            Osztalyfonok.OktatottTantargyak();
+            Console.WriteLine("Az osztály tele van, nem lehet új diákot felvenni.");
         }
     }
+    public void OsszesDiakListazasa()
+    {
+        Console.WriteLine($"A(z) {Nev} osztály diákjai:");
+        foreach (var diak in Diakok)
+        {
+            diak.TeljesNevKiirasa();
+        }
+    }
+
+    public void OsztalyfonokKiirasa()
+    {
+        Console.WriteLine($"Osztályfőnök: {Osztalyfonok.Nev}");
+        Osztalyfonok.OktatottTantargyak();
+    }
+
+        public void HozzaadErtekeles(Diak diak, Tantargy tantargy, int jegy)
+        {
+            Ertekeles ujErtekeles = new Ertekeles(diak, tantargy, jegy);
+            Ertekelesek.Add(ujErtekeles);
+            Console.WriteLine($"Új jegy hozzáadva: {diak.Nev} -> {tantargy.Nev}: {jegy}");
+        }
+
+        public void ErdemjegyekKiirasa()
+        {
+            Console.WriteLine("\n=== Összes érdemjegy ===");
+            foreach (var ertekeles in Ertekelesek)
+            {
+                ertekeles.JegyKiirasa();
+            }
+        }
 }

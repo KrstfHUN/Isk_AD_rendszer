@@ -1,5 +1,4 @@
-﻿using Isk_AD_rendszer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Iskola
