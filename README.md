@@ -1,1 +1,1 @@
-# Isk_AD_rendszer
+# Iskolai Adminisztrációs Rendszer
