@@ -1,1 +1,1 @@
-# Iskolai ADminisztrációs Rendszer
+# Iskolai Adminisztrációs Rendszer
